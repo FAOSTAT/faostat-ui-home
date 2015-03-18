@@ -28,6 +28,13 @@ define(['jquery',
         /* Fix the language, if needed. */
         this.CONFIG.lang = this.CONFIG.lang != null ? this.CONFIG.lang : 'E';
 
+        /* Load template. */
+        var source = $(templates).filter('#faostat_ui_home_structure').html();
+        var template = Handlebars.compile(source);
+        var dynamic_data = {};
+        var html = template(dynamic_data);
+        $('#' + this.CONFIG.placeholder_id).html(html);
+
     };
 
     return MENU;
